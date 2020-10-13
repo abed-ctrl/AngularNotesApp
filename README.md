@@ -1,5 +1,7 @@
 # NoteApp
 
+A Simple Project in Angular Framework wich you can add Add Some Notes and Delete it.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
 ## Development server
