@@ -1,0 +1,47 @@
+<h3 
+    [ngStyle]="{'textAlign': 'center'}"
+    [style.color]="'red'"
+    [class]="'pt-4 pr-4 pl-4'">
+    Type in a Note and Press Enter or Click Add Note Button to Add it
+</h3>
+
+<div class="input-group pt-4 pr-4 pl-4">
+    <input 
+        [class.form-control]="true"
+        [attr.type]="'text'" 
+        placeholder="Add a Note Here ...."
+        [(ngModel)]="note"
+        (keyup.Enter) = "onEnter()">
+    <div class="input-group-append">
+        <button class="btn btn-primary" type="button" (click)="onEnter()">Add Note</button>
+    </div>
+</div>
+
+<hr>
+<hr>
+
+<div>
+    <h4
+        [ngStyle]="{'textAlign': 'center'}"
+        [style.color]="'red'">
+        Notes List
+    </h4>
+    <div *ngIf=" notes.length; else AddNotesBlock">
+        <ul class="list-group">
+            <app-note-list-item
+                *ngFor="let note of notes; let i = index"
+                [note]="note.message"
+                [noteIndex]="i"
+                (deleteClick)="onDeleteNote($event)"></app-note-list-item>
+        </ul>
+    </div>
+    <ng-template #AddNotesBlock>
+        <p 
+            [attr.title]="'Warning Note'"
+            [ngStyle]="{'textAlign': 'center', 'color': '#F5853F', 'fontSize': '20px'}"
+            [class]="'pt-4 pr-4 pl-4'">
+            Add some notes to see them here!!
+        </p>
+    </ng-template>
+    
+</div>
